@@ -10,16 +10,22 @@ export enum InputTypes {
 
 interface IProps {
    type: InputTypes;
-}
-
-interface IState {
    value: string;
+   onChange: (value: string) => void;
 }
 
-export class Input extends React.Component<IProps, IState> {
+export class Input extends React.PureComponent<IProps> {
+   onChange = (e: React.SyntheticEvent<HTMLInputElement>) => {
+      const {value} = e.currentTarget;
+      this.props.onChange(value);
+   }
    render() {
       return <div className={'input'}>
-         <input type={this.props.type} className="input__native-input"/>
+         <input
+         value={this.props.value}
+         onChange={this.onChange}
+         type={this.props.type}
+         className="input__native-input"/>
       </div>
    }
 }
