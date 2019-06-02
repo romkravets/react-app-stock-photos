@@ -21,11 +21,11 @@ export class Input extends React.PureComponent<IProps> {
    }
    render() {
       return <div className={'input'}>
-         <input
+         <input className="input__native-input"
          value={this.props.value}
          onChange={this.onChange}
          type={this.props.type}
-         className="input__native-input"/>
+         />
       </div>
    }
 }
